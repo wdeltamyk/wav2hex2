@@ -21,3 +21,7 @@ after the script runs, it will create a bunch of CSV files per item in the input
 # Final update
 
 exe included for those without python or who don't want to use it, just run the exe as you would any normal program.
+
+# Evidently not final update
+
+Added a function for the script to provide the hex as both stripped of the leading 0's and in this format: $0F, $06, etc, the former being more useful for converting a single sample to a single wavetable, the latter for triggering a bunch of wavetables as a routine.

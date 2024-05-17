@@ -16,13 +16,17 @@ def segment_and_normalize_waveform(waveform, segment_length, max_segments):
 
 # Function to convert normalized segments to hexadecimal representation
 def segments_to_hex(segments):
-    hex_segments = []
+    hex_segments_no_leading_zeros = []
+    hex_segments_with_leading_zeros = []
     for segment in segments:
-        hex_segment = [format(value, 'X') for value in segment]
-        # Remove leading zeros for values
-        hex_segment = [value.lstrip('0') or '0' for value in hex_segment]
-        hex_segments.append(''.join(hex_segment))
-    return hex_segments
+        hex_segment_no_leading_zeros = [format(value, 'X') for value in segment]
+        hex_segment_no_leading_zeros = [value.lstrip('0') or '0' for value in hex_segment_no_leading_zeros]
+        hex_segments_no_leading_zeros.append(''.join(hex_segment_no_leading_zeros))
+
+        hex_segment_with_leading_zeros = [f"${format(value, '02X')}" for value in segment]
+        hex_segments_with_leading_zeros.append(''.join(hex_segment_with_leading_zeros))
+        
+    return hex_segments_no_leading_zeros, hex_segments_with_leading_zeros
 
 # Create output directory if it doesn't exist
 os.makedirs('output', exist_ok=True)
@@ -43,11 +47,17 @@ for filename in os.listdir(input_directory):
         normalized_segments = segment_and_normalize_waveform(data, 32, 15)
 
         # Convert the normalized segments to hexadecimal representation
-        hex_segments = segments_to_hex(normalized_segments)
+        hex_segments_no_leading_zeros, hex_segments_with_leading_zeros = segments_to_hex(normalized_segments)
 
         # Write the hex segments to a CSV file
         output_filename = os.path.join('output', f"{os.path.splitext(filename)[0]}.csv")
         with open(output_filename, mode='w', newline='') as file:
             writer = csv.writer(file)
-            for i, segment in enumerate(hex_segments):
+            writer.writerow(["Hex Values without Leading Zeros"])
+            for i, segment in enumerate(hex_segments_no_leading_zeros):
+                writer.writerow([f"{segment}"])
+
+            writer.writerow([])  # Add an empty row for separation
+            writer.writerow(["Hex Values with Leading Zeros"])
+            for i, segment in enumerate(hex_segments_with_leading_zeros):
                 writer.writerow([f"{segment}"])
