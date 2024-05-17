@@ -8,7 +8,7 @@ The sample needs to be 8bit mono, it will just crash otherwise. The shorter the 
 
 # Requirements
 
-Requires Numpy and SciPy. Both can be installed easily by running "pip install -U numpy" or pip install -U scipy" in a terminal or console.
+Requires Numpy, csv, os and SciPy. Numpy and SciPy can be installed easily by running "pip install -U numpy" or pip install -U scipy" in a terminal or console, the other two are bog standard.
 
 # Use
 
@@ -17,3 +17,7 @@ Throw any wav into the included "input" folder, tests included, ~~for now this n
 # Output
 
 after the script runs, it will create a bunch of CSV files per item in the input folder and throw them in an output folder as one string. If it can't process a file it will show it in a terminal but will still run against the files it can process.
+
+# Final update
+
+exe included for those without python or who don't want to use it, just run the exe as you would any normal program.
