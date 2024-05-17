@@ -12,7 +12,7 @@ Requires Numpy and SciPy. Both can be installed easily by running "pip install -
 
 # Use
 
-Throw any wav into the included "input" folder, tests included, for now this needs to be pointed to a specific file ~~[will update with additional features at {redacted} date]~~. Updated to include all wav files stored in the input folder. The hex output ignores the first digit of the string, as this is always a return to 0, where hUGETracker only needs the deviations from 0, except where a leading 0 is followed by another 0, the second 0 is still captured.
+Throw any wav into the included "input" folder, tests included, ~~for now this needs to be pointed to a specific file [will update with additional features at {redacted} date]~~. Updated to include all wav files stored in the input folder. The hex output ignores the first digit of the string, as this is always a return to 0, where hUGETracker only needs the deviations from 0, except where a leading 0 is followed by another 0, the second 0 is still captured.
 
 # Output
 
