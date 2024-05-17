@@ -23,7 +23,7 @@ def segments_to_hex(segments):
         hex_segment_no_leading_zeros = [value.lstrip('0') or '0' for value in hex_segment_no_leading_zeros]
         hex_segments_no_leading_zeros.append(''.join(hex_segment_no_leading_zeros))
 
-        hex_segment_with_leading_zeros = [f"${format(value, '02X')}, " for value in segment]
+        hex_segment_with_leading_zeros = [f"${format(value, '02X')}," for value in segment]
         hex_segments_with_leading_zeros.append(''.join(hex_segment_with_leading_zeros))
         
     return hex_segments_no_leading_zeros, hex_segments_with_leading_zeros
